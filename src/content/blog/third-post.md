@@ -1,6 +1,8 @@
 ---
 title: 'Third post'
 description: 'Lorem ipsum dolor sit amet'
+author: 'Priya Nair'
+authorBio: 'Priya writes about design systems, front-end craftsmanship, and how small details shape memorable digital products.'
 pubDate: 'Jul 22 2022'
 heroImage: '../../assets/blog-placeholder-2.jpg'
 ---

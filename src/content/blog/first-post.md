@@ -1,6 +1,8 @@
 ---
 title: 'First post'
 description: 'Lorem ipsum dolor sit amet'
+author: 'Sarah Chen'
+authorBio: 'Sarah is a product designer and writer who explores the intersection of creativity, technology, and thoughtful digital experiences.'
 pubDate: 'Jul 08 2022'
 heroImage: '../../assets/blog-placeholder-3.jpg'
 ---
