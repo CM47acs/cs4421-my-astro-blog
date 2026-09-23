@@ -1,5 +1,20 @@
 {
+  "name": "my-astro-blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "astro check",
+    "preview": "astro preview",
+    "lint": "eslint ."
+  },
   "dependencies": {
+    "astro": "^7.3.2",
     "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "eslint": "^10.11.0",
+    "eslint-plugin-astro": "^3.2.1"
   }
 }
