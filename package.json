@@ -7,7 +7,8 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:unit": "vitest"
   },
   "dependencies": {
     "astro": "^7.3.2",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "eslint": "^10.11.0",
-    "eslint-plugin-astro": "^3.2.1"
+    "eslint-plugin-astro": "^3.2.1",
+    "vitest": "^5.0.1"
   }
 }
