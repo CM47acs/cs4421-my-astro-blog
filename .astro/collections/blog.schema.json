@@ -8,22 +8,9 @@
     "description": {
       "type": "string"
     },
-    "author": {
-      "type": "string"
-    },
-    "authorBio": {
-      "type": "string"
-    },
     "pubDate": {
       "type": "string",
       "format": "date-time"
-    },
-    "updatedDate": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "heroImage": {
-      "type": "string"
     },
     "$schema": {
       "type": "string"
@@ -32,8 +19,6 @@
   "required": [
     "title",
     "description",
-    "author",
-    "authorBio",
     "pubDate"
   ]
 }
