@@ -1,8 +1,12 @@
 import { defineConfig, fontProviders } from 'astro/config';
-import { unified } from '@astrojs/markdown-remark';
-import node from '@astrojs/node';
+import { unified } from '@astrojs/markdown-remark';import node from '@astrojs/node';
 export default defineConfig({
   site: 'http://localhost:4321',
+  output: 'server',
+  adapter: node({
+	mode: 'standalone',
+  }),
+  
 
   fonts: [
     {
@@ -33,4 +37,5 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone',
   }),
-});
+  },
+);
