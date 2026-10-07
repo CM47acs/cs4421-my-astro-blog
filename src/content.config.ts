@@ -1,6 +1,4 @@
-// @ts-expect-error Astro's virtual module is provided by the Astro build tool.
-import { defineCollection } from "astro:content";
-import { z } from "astro/zod";
+import { defineCollection, z, image } from "astro:content";
 
 const blog = defineCollection({
   type: "content",
@@ -8,6 +6,8 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: image().optional(),
   }),
 });
 
