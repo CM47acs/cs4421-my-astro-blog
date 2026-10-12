@@ -1,4 +1,13 @@
-import { defineCollection, z, image } from "astro:content";
+import { defineCollection, z } from "astro:content";
+
+const imageSchema = z
+  .object({
+    src: z.string(),
+    width: z.number(),
+    height: z.number(),
+    format: z.string().optional(),
+  })
+  .or(z.string());
 
 const blog = defineCollection({
   type: "content",
@@ -7,7 +16,7 @@ const blog = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
+    heroImage: imageSchema.optional(),
   }),
 });
 
