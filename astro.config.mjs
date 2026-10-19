@@ -1,41 +1,26 @@
-import { defineConfig, fontProviders } from 'astro/config';
-import { unified } from '@astrojs/markdown-remark';import node from '@astrojs/node';
+import { defineConfig } from 'astro/config'
+import svelte from '@astrojs/svelte'
+import mdx from '@astrojs/mdx'
+import remarkGfm from 'remark-gfm'
+import remarkSmartypants from 'remark-smartypants'
+import rehypeExternalLinks from 'rehype-external-links'
+
+// https://astro.build/config
 export default defineConfig({
-  site: 'http://localhost:4321',
-  output: 'server',
-  adapter: node({
-	mode: 'standalone',
-  }),
-  
-
-  fonts: [
-    {
-      provider: fontProviders.local(),
-      name: 'Atkinson',
-      cssVariable: '--font-atkinson',
-      options: {
-        variants: [
-          {
-            src: './src/assets/fonts/atkinson-regular.woff',
-            weight: 400,
-            style: 'normal',
-          },
-          {
-            src: './src/assets/fonts/atkinson-bold.woff',
-            weight: 700,
-            style: 'normal',
-          },
-        ],
-      },
-    },
-  ],
-
+  site: 'https://astro-blog-template.netlify.app',
+  integrations: [mdx(), svelte()],
   markdown: {
-    processor: unified(),
+    shikiConfig: {
+      theme: 'nord',
+    },
+    remarkPlugins: [remarkGfm, remarkSmartypants],
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+        },
+      ],
+    ],
   },
-
-  adapter: node({
-    mode: 'standalone',
-  }),
-  },
-);
+})
