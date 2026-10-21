@@ -13,12 +13,28 @@ allPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).valueOf() - new 
 <BaseLayout title={title} description={description} permalink={permalink} current="blog">
   <div class="container">
     <h1>Blog</h1>
-    {allPosts.map((post, index) => {
-      const href = `/blog/${post.data.slug}`;
-      return (
-        <div>
-          { index !== 0 && <hr /> }
-          <div class="post-item">
+    <div class="post-search">
+      <label for="post-search-input">Search blog posts</label>
+      <input
+        id="post-search-input"
+        type="search"
+        placeholder="Search by title or description"
+        autocomplete="off"
+      />
+      <p id="post-search-status" class="search-status" aria-live="polite">
+        {allPosts.length} {allPosts.length === 1 ? 'post' : 'posts'}
+      </p>
+    </div>
+    <div id="post-list">
+      {allPosts.map((post, index) => {
+        const href = `/blog/${post.data.slug}`;
+        return (
+          <article
+            class="post-item"
+            data-post
+            data-search={`${post.data.title} ${post.data.description}`.toLowerCase()}
+          >
+            {index !== 0 && <hr />}
             <h2>
               <a href={href}>{post.data.title}</a>
             </h2>
@@ -26,14 +42,65 @@ allPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).valueOf() - new 
             <div class="post-item-footer">
               <span class="post-item-date">— {post.data.publishDate}</span>
             </div>
-          </div>
-        </div>
-      )
-    })}
+          </article>
+        );
+      })}
+      {allPosts.length === 0 && <p>No blog posts have been published yet.</p>}
+    </div>
   </div>
 </BaseLayout>
 
+<script>
+  const searchInput = document.querySelector<HTMLInputElement>('#post-search-input');
+  const searchStatus = document.querySelector<HTMLElement>('#post-search-status');
+  const posts = Array.from(document.querySelectorAll<HTMLElement>('[data-post]'));
+
+  searchInput?.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    for (const post of posts) {
+      const matches = post.dataset.search?.includes(query) ?? false;
+      post.hidden = !matches;
+      if (matches) visibleCount += 1;
+    }
+
+    if (searchStatus) {
+      searchStatus.textContent = query
+        ? `${visibleCount} ${visibleCount === 1 ? 'post' : 'posts'} found`
+        : `${visibleCount} ${visibleCount === 1 ? 'post' : 'posts'}`;
+    }
+  });
+</script>
+
 <style>
+  .post-search {
+    margin-bottom: 2em;
+  }
+
+  .post-search label {
+    display: block;
+    font-family: var(--font-family-sans);
+    font-weight: 700;
+    margin-bottom: 0.5em;
+  }
+
+  .post-search input {
+    width: 100%;
+    padding: 0.75em 1em;
+    border: 1px solid var(--text-secondary);
+    border-radius: 4px;
+    background: var(--background-body);
+    color: var(--text-main);
+    font: inherit;
+  }
+
+  .search-status {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0.5em 0 0;
+  }
+
   h2,
   .post-item-footer {
     font-family: var(--font-family-sans);
