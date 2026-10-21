@@ -19,6 +19,10 @@ jobs:
       - name: Install Project Dependencies
         run: npm ci # Clean, deterministic install from package-lock.json
 
+      - name: Install AWS CDK Dependencies
+        working-directory: cdk
+        run: npm ci
+        
       - name: Run Static Analysis & Tests
         run: |
           npm run lint
