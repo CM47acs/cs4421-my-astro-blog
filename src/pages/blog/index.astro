@@ -7,7 +7,13 @@ const description = 'Latest articles.';
 const permalink = `${Astro.site.href}blog`;
 
 let allPosts = await getCollection('posts')
-allPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
+allPosts = allPosts.sort((a, b) => {
+  if (a.data.pinned !== b.data.pinned) {
+    return a.data.pinned ? -1 : 1;
+  }
+
+  return new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf();
+});
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink} current="blog">
@@ -35,6 +41,7 @@ allPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).valueOf() - new 
             data-search={`${post.data.title} ${post.data.description}`.toLowerCase()}
           >
             {index !== 0 && <hr />}
+            {post.data.pinned && <span class="post-pinned">Pinned</span>}
             <h2>
               <a href={href}>{post.data.title}</a>
             </h2>
@@ -99,6 +106,14 @@ allPosts = allPosts.sort((a, b) => new Date(b.data.publishDate).valueOf() - new 
     color: var(--text-secondary);
     font-size: 1rem;
     margin: 0.5em 0 0;
+  }
+
+  .post-pinned {
+    color: var(--primary-color);
+    font-family: var(--font-family-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
   h2,
