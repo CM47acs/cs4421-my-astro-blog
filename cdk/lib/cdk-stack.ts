@@ -11,8 +11,35 @@ const siteBucket = new s3.Bucket(this, 'SiteBucket', {
 removalPolicy: cdk.RemovalPolicy.DESTROY,
 autoDeleteObjects: true,
 });
+const rewriteFunction = new cloudfront.Function(this, 'RewritePagePaths', {
+ runtime: cloudfront.FunctionRuntime.JS_2_0,
+    code: cloudfront.FunctionCode.fromInline(`
+function handler(event) {
+  var request = event.request;
+  var uri = request.uri;
+
+  if (uri !== '/' && uri.endsWith('/')) {
+    request.uri += 'index.html';
+  } else {
+    var lastSegment = uri.substring(uri.lastIndexOf('/') + 1);
+    if (uri !== '/' && !lastSegment.includes('.')) {
+      request.uri += '/index.html';
+    }
+  }
+  return request;
+}
+  `),
+});
 const distribution = new cloudfront.Distribution(this, 'SiteDistribution', {
-defaultBehavior: { origin: origins.S3BucketOrigin.withOriginAccessControl(siteBucket) },
+defaultBehavior: {
+  origin: origins.S3BucketOrigin.withOriginAccessControl(siteBucket),
+  functionAssociations: [
+    {
+      function: rewriteFunction,
+      eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+    },
+  ],
+},
 defaultRootObject: 'index.html',
 });
 new s3deploy.BucketDeployment(this, 'DeploySite', {
