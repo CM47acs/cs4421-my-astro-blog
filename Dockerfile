@@ -13,7 +13,7 @@ ENV NODE_ENV=production HOST=0.0.0.0 PORT=4321
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
-HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=3s --retries=4 \
 CMD wget --no-verbose --tries=1 --spider http://localhost:4321/api/health || exit 1
 EXPOSE 4321
 CMD ["node", "./dist/server/entry.mjs"]
