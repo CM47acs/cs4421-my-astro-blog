@@ -3,6 +3,7 @@ title: Hello World 👋
 slug: hello-world
 publishDate: 30 Nov 2020
 description: Every blog starts with a single post. This is yours. Make it great.
+thumbnail: /assets/blog/casual-life-3d-meditation-crystal.webp
 pinned: true
 ---
 

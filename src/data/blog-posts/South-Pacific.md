@@ -1,8 +1,9 @@
 ---
-title: The Worst Survivor Season   (in my opinion)
+title: The Worst Survivor Season
 slug: The-worst-survivor-season
 publishDate: "22 Nov 2026"
 description: "My quick review of my least favourite season, South Pacific"
+thumbnail: "/assets/blog/southpacific.webp"
 ---
 
 Season 23 of Survivor was release in 2011, hot off the heels of the worst year of Survivor with Season 21: Nicaragua and Season 22: Redemption Island both being panned for their boring gameplay and uninteresting story, with Redemption Island being commonly considered the worst season of the show by fans. So, naturally the genius minds at CBS decided to simply use an indentical format to Redemption Island, with 2 returning players, one on each tribe and a cast of newbies with the redemption island twist active for both the pre and post merge. Similar to redemption island the returnees, both Coach and Ozzy were fan favourite players looking for another shot at the crown. 
