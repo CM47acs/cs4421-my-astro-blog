@@ -42,12 +42,21 @@ allPosts = allPosts.sort((a, b) => {
           >
             {index !== 0 && <hr />}
             {post.data.pinned && <span class="post-pinned">Pinned</span>}
-            <h2>
-              <a href={href}>{post.data.title}</a>
-            </h2>
-            <p>{post.data.description}</p>
-            <div class="post-item-footer">
-              <span class="post-item-date">— {post.data.publishDate}</span>
+            <div class="post-item-content">
+              {post.data.thumbnail && (
+                <a class="post-thumbnail-link" href={href} tabindex="-1" aria-hidden="true">
+                  <img class="post-thumbnail" src={post.data.thumbnail} alt="" loading="lazy" />
+                </a>
+              )}
+              <div class="post-item-copy">
+                <h2>
+                  <a href={href}>{post.data.title}</a>
+                </h2>
+                <p>{post.data.description}</p>
+                <div class="post-item-footer">
+                  <span class="post-item-date">— {post.data.publishDate}</span>
+                </div>
+              </div>
             </div>
           </article>
         );
@@ -116,6 +125,29 @@ allPosts = allPosts.sort((a, b) => {
     text-transform: uppercase;
   }
 
+  .post-item-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25em;
+  }
+
+  .post-thumbnail-link {
+    flex: 0 0 180px;
+  }
+
+  .post-thumbnail {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .post-item-copy {
+    flex: 1;
+    min-width: 0;
+  }
+
   h2,
   .post-item-footer {
     font-family: var(--font-family-sans);
@@ -131,5 +163,17 @@ allPosts = allPosts.sort((a, b) => {
 
   hr {
     margin: 60px auto;
+  }
+
+  @media (max-width: 600px) {
+    .post-item-content {
+      flex-direction: column;
+    }
+
+    .post-thumbnail-link {
+      flex-basis: auto;
+      width: 100%;
+      max-width: 360px;
+    }
   }
 </style>
