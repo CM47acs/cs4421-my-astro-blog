@@ -26,6 +26,13 @@ const Content = post ? (await render(post)).Content : undefined;
       <header>
         <p>{publishDate} ~ {readingTimeEstimate}</p>
         <h1>{title}</h1>
+        {post.data.thumbnail && (
+          <img
+            class="post-thumbnail"
+            src={post.data.thumbnail}
+            alt={`${title} thumbnail`}
+          />
+        )}
         <hr />
       </header>
       <div class="container">
@@ -51,6 +58,14 @@ const Content = post ? (await render(post)).Content : undefined;
 
   header h1 {
     margin-bottom: 0.7em;
+  }
+
+  .post-thumbnail {
+    display: block;
+    width: min(100%, 720px);
+    max-height: 420px;
+    margin: 0 auto 1.5em;
+    object-fit: contain;
   }
 
   header p {
