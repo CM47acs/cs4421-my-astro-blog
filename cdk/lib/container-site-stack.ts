@@ -5,6 +5,7 @@ import * as ecsPatterns from 'aws-cdk-lib/aws-ecs-patterns';
 import * as path from 'node:path';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
+import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 
 export class ContainerSiteStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
@@ -40,7 +41,16 @@ export class ContainerSiteStack extends cdk.Stack {
         },
       },
     });
-    const distribution = new cloudfront.Distribution(this, 'SiteDistribution', {
+const certificate = acm.Certificate.fromCertificateArn(
+  this,
+  'SiteCertificate',
+  'arn:aws:acm:us-east-1:438456518186:certificate/8d7d3141-9900-472a-ac60-9eb2809a8944'
+);
+
+
+const distribution = new cloudfront.Distribution(this, 'SiteDistribution', {
+  domainNames: ['www.walterworm.monster'],
+  certificate,
   defaultBehavior: {
     origin: new origins.LoadBalancerV2Origin(service.loadBalancer, {
       protocolPolicy: cloudfront.OriginProtocolPolicy.HTTP_ONLY,
