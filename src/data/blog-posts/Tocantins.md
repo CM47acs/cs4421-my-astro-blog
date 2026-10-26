@@ -37,5 +37,19 @@ The season begins with the two tribes, Timbira and Jalapao were both forced to v
 
  In Jalapao, the trios of Taj/JT/Stephen and Joe/Spencer/Sydney took control of the tribe by working together to eliminate Caroline at the first vote. However their second tribal was far more interesting, as Taj, JT and Stephen did not want to vote out Sandy, but felt they coudln't risk losing both Joe and Spencer's loyalty if they blindsided Sydney.
 
- In Timbera, things were very messy. Coach wanted nothing more than to control the tribe and eliminate the weak players, as he wanted to go as far as possible with only the strongest players and he brazenly spoke about this to everybody. This really rubbed Candace the wrong way, and she wanted him out as early as possible, however the tribe felt it was too early to target a strong physical player, so Candace was the first to be voted out. After this first vote however, it became clear that Brendan and Coach were bound for a power struggle as they wrestled for control over the tribe
+ In Timbera, things were very messy. Coach wanted nothing more than to control the tribe and eliminate the weak players, as he wanted to go as far as possible with only the strongest players and he brazenly spoke about this to everybody. This really rubbed Candace the wrong way, and she wanted him out as early as possible, however the tribe felt it was too early to target a strong physical player, so Candace was the first to be voted out. After this first vote however, it became clear that Brendan and Coach were bound for a power struggle as they wrestled for control over the tribe.
+
+ Timbera would never get to decide a true leader however, as they would win the final 2 immunity challenges to be up 6-4 in the merge. This being a swapless season, one could expect a pagoning on the Jalapaos. Instead the fact that Timbera never could resolve their power struggle meant they went into the merge only targeting eachother. 
+
+<figure style="text-align: center;">
+  <img
+    src="\assets\blog\coachbrendan.jpg"
+    alt="Coach and Brendan, who would ultimately have an intense power struggle"
+    style="display: block; margin: 0 auto;"
+  />
+  <figcaption>Coach and Brendan</figcaption>
+</figure>
+
+
+ ## The Merge
 
