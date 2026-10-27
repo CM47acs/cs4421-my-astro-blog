@@ -49,7 +49,7 @@ const certificate = acm.Certificate.fromCertificateArn(
 
 
 const distribution = new cloudfront.Distribution(this, 'SiteDistribution', {
-  domainNames: ['walterworm.monster'],
+  domainNames: ['www.walterworm.monster'],
   certificate,
   defaultBehavior: {
     origin: new origins.LoadBalancerV2Origin(service.loadBalancer, {
